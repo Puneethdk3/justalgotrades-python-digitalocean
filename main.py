@@ -75,6 +75,7 @@ candle5minPath = os.path.join(final_directory, r'candle5min')
 candle15minPath = os.path.join(final_directory, r'candle15min')
 candle60minPath = os.path.join(final_directory, r'candle60min')
 
+proPath = 'https://pro.justalgotrades.com'
    
    
 def socket_example(intradaySymbols, purpose, access_token):
@@ -222,6 +223,16 @@ def getCandle3Min():
     except Exception as e:
         data = {}
     return data
+
+@app.route('/api/update/ip', methods=['GET'])
+@cross_origin(origin='*')
+def updateIP():
+    global proPath
+    try:
+        proPath = request.args["ip"]
+    except Exception as e:
+        data = {}
+    return proPath
 
 @app.route('/api/candle/5M', methods=['GET'])
 @cross_origin(origin='*')
@@ -520,7 +531,8 @@ def event_handler_quote_update(message):
 
     
 def getIntradaySymbols():
-    url = "http://pro.justalgotrades.com/api/trades/today"
+    global proPath
+    url = str(proPath)+"/api/trades/today"
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
@@ -529,7 +541,8 @@ def getIntradaySymbols():
     return data
 
 def getExistingAccessToken():
-    url = "https://pro.justalgotrades.com/api/client/eligible"
+    global proPath
+    url = str(proPath)+"/api/client/eligible"
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
@@ -538,7 +551,8 @@ def getExistingAccessToken():
     return random.choice(data)["accesstoken"]
 
 def getRandomClientId():
-    url = "https://pro.justalgotrades.com/api/client/eligible"
+    global proPath
+    url = str(proPath)+"/api/client/eligible"
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
@@ -550,9 +564,10 @@ def getRandomClientId():
 def getTodaysTradesWithToken():
     
     data = []
+    global proPath
     try:
         clientId = getRandomClientId()
-        url = "https://pro.justalgotrades.com/api/trades/clients/"+str(clientId)
+        url = str(proPath)+"/api/trades/clients/"+str(clientId)
         headers = {'Content-Type': 'application/json'}
         res = requests.get(url, headers=headers)
     
