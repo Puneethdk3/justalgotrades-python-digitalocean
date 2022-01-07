@@ -307,7 +307,7 @@ def getCandle60Min():
     return data
     
 def writeToFile(fullPath, content):
-    print(fullPath)
+    #print(fullPath)
     f = open(fullPath, "w")
     f.write(str(content))
     f.close()
@@ -457,7 +457,7 @@ def event_handler_quote_update(message):
     writeToFile(fullPath, x)
     
     date = str(exchangeTime.day).zfill(2) +"-"+ str(exchangeTime.month).zfill(2) +"-"+ str(exchangeTime.year).zfill(2)
-    print(date +" "+str(eHour)+":"+str(eMin)+":"+str(eSec))
+    #print(date +" "+str(eHour)+":"+str(eMin)+":"+str(eSec))
     
     
     if(eHour==9 and eMin==18 and eMin <=19 and (eSec>=30)):
@@ -536,7 +536,7 @@ def getIntradaySymbols():
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
-    print(res)
+    #print(res)
     data = res.json()["data"]
     return data
 
@@ -546,7 +546,7 @@ def getExistingAccessToken():
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
-    print(res)
+    #print(res)
     data = res.json()["data"]
     return random.choice(data)["accesstoken"]
 
@@ -556,7 +556,7 @@ def getRandomClientId():
     headers = {'Content-Type': 'application/json'}
     res = requests.get(url, headers=headers)
 
-    print(res)
+    #print(res)
     data = res.json()["data"]
     return random.choice(data)["clientid"]
 
@@ -571,7 +571,7 @@ def getTodaysTradesWithToken():
         headers = {'Content-Type': 'application/json'}
         res = requests.get(url, headers=headers)
     
-        print("CandleFetch=======================fetching trades for clientid="+str(clientId))
+        #print("CandleFetch=======================fetching trades for clientid="+str(clientId))
         data  = res.json()["data"]
     except Exception as e:
         print(str(e))
