@@ -1,4 +1,5 @@
-Flask==1.1.2
+Flask==1.1.4
+itsdangerous==2.0.1
 honcho==1.0.1
 gunicorn==20.1.0
 alice_blue
