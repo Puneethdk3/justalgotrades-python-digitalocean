@@ -405,7 +405,7 @@ def fetchCandleDataFromUpstox(date, whichCandle, candlePath):
         
     
 def event_handler_quote_update(message):
-    print(message)
+    #print(message)
     
     global livePath, candle3minPath, candle5minPath, candle15minPath, candle60minPath, exitWS1, exitWS2, isCandle3MinDataGot, isCandle5MinDataGot, isCandle15MinDataGot, isCandle60MinDataGot
     
