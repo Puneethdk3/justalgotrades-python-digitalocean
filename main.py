@@ -379,7 +379,7 @@ def fetchCandleDataFromUpstox(date, whichCandle, candlePath):
             symbol = str(t["symbol"])
             fullPath = candlePath + '/' + token+".json"
             if(os.path.exists(fullPath) == False):
-                print("Fetching 3min candle data")
+                #print("Fetching 3min candle data")
                 res = getCandleData(symbol, str(whichCandle), date, upstoxApiKey, upstoxAccessToken)
                 if(len(res) > 0):
                     candleData = {
@@ -405,7 +405,7 @@ def fetchCandleDataFromUpstox(date, whichCandle, candlePath):
         
     
 def event_handler_quote_update(message):
-    #print(message)
+    print(message)
     
     global livePath, candle3minPath, candle5minPath, candle15minPath, candle60minPath, exitWS1, exitWS2, isCandle3MinDataGot, isCandle5MinDataGot, isCandle15MinDataGot, isCandle60MinDataGot
     
@@ -847,7 +847,7 @@ def getFullData():
         
         mypath = path
         onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-        print(onlyfiles)
+        #print(onlyfiles)
 
         for file in onlyfiles:
             fullPath = path + file
