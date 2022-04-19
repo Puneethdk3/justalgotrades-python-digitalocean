@@ -2,6 +2,6 @@ Flask==1.1.4
 markupsafe==2.0.1
 honcho==1.0.1
 gunicorn==20.1.0
-alice_blue
+alice_blue==1.0.3
 flask-cors
 pytz
